@@ -2,3 +2,7 @@ RewriteEngine On
 RewriteRule ^start$ start.php [L]
 RewriteRule ^admin$ ePanel/index.php [L]
 RewriteRule ^panel$ ePanel/panel [L]
+RewriteRule ^ePanel/panel/mysql$ ePanel/panel/mysql.php [L]
+RewriteRule ^ePanel/panel/phpmyadmin$ ePanel/panel/phpmyadmin.php [L]
+RewriteRule ^ePanel/panel/settings$ ePanel/panel/settings.php [L]
+RewriteRule ^ePanel/panel/recommended$ ePanel/panel/recommended.php [L]

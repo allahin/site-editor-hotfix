@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $_SESSION['username'] = $username;
 
-        header("Location: ../../epanel/panel");
+        header("Location: ../../ePanel/panel");
         exit();
     } else {
         $message = "Incorrect username or password.";

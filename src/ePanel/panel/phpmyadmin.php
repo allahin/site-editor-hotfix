@@ -84,6 +84,10 @@ button {
 button:hover {
   background-color: #0056b3;
 }
+
+.baba {
+    margin-bottom: 10px;
+}
   </style>
 </head>
 <body class="flex justify-center items-center h-screen">
@@ -98,7 +102,7 @@ button:hover {
     </div>
         <div class="container mx-auto p-6">
         <div class="mt-6 selam">
-            <h1 class="font-bold"><a href="../../phpmyadmin">phpMyAdmin</a> page (if have)</h1>
+            <h1 class="font-bold baba"><a href="../../phpmyadmin">phpMyAdmin</a> page (if have)</h1>
             <script>
 function aramaYap() {
     var arananMetin = document.getElementById("arananMetin").value;

@@ -33,29 +33,31 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <link rel="icon" type="image/x-icon" href="<?= file_exists('../../favicon.txt') ? file_get_contents('../../favicon.txt') : "Fatal error, please reinstall." ?>">
     <title>ePanel | MySQL</title>
     <style>
-    #taskbar {
-      background-color: #f2f2f2;
-      padding: 10px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      z-index: 9999;
-    }
+#taskbar {
+  background-color: #f2f2f2;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 9999;
+}
     
-    #logo {
-      color: #333;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    .logo-container {
-            position: absolute;
-            top: 80px;
-        }
-        .selam {
-            position: absolute;
-            top: 150px;
-        }
+#logo {
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.logo-container {
+  position: absolute;
+  top: 80px;
+}
+
+.selam {
+  position: absolute;
+  top: 150px;
+}
   </style>
 </head>
 <body class="flex justify-center items-center h-screen">
@@ -111,20 +113,17 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
   $show_databases_query = "SHOW DATABASES";
   $databases = $conn->query($show_databases_query);
   ?>
-
   <h2 class="text-lg font-bold mt-4">Databases</h2>
   <ul class="list-disc pl-8 mt-2">
     <?php while ($row = $databases->fetch_assoc()) : ?>
       <li><?php echo $row['Database']; ?></li>
     <?php endwhile; ?>
   </ul>
-
   <h2 class="text-lg font-bold mt-4">Database Create</h2>
   <form method="post" class="mb-4">
     <input type="text" name="db_name" placeholder="Database name" required class="px-2 py-1 border rounded">
     <button type="submit" name="create_db" class="ml-2 px-4 py-2 bg-blue-500 text-white font-semibold rounded">Create</button>
   </form>
-
   <h2 class="text-lg font-bold mt-4">Database Delete</h2>
   <form method="post" class="mb-4">
     <input type="text" name="db_name" placeholder="Database name" required class="px-2 py-1 border rounded">

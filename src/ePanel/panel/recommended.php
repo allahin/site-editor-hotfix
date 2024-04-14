@@ -3,7 +3,6 @@ session_start();
 
 require_once '../connect.php';
 
-// Kullanıcı girişi kontrolü
 if (isset($_COOKIE['panel'])) {
     $username = $_COOKIE['panel'];
 
@@ -20,7 +19,6 @@ if (isset($_COOKIE['panel'])) {
     }
 }
 
-// Kullanıcı girişi yapılmamışsa geri yönlendir
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: ../../admin");
     exit;
@@ -28,7 +26,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,31 +33,31 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <link rel="icon" type="image/x-icon" href="<?= file_exists('../../favicon.txt') ? file_get_contents('../../favicon.txt') : "Fatal error, please reinstall." ?>">
     <title>ePanel | Recommended</title>
     <style>
-    /* Görev çubuğu stilleri */
-    #taskbar {
-      background-color: #f2f2f2;
-      padding: 10px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      z-index: 9999;
-    }
-    
-    /* Logo stilleri */
-    #logo {
-      color: #333;
-      font-weight: bold;
-      text-decoration: none;
-    }
-    .logo-container {
-            position: absolute;
-            top: 80px;
-        }
-        .selam {
-            position: absolute;
-            top: 150px;
-        }
+#taskbar {
+  background-color: #f2f2f2;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 9999;
+}
+
+#logo {
+  color: #333;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.logo-container {
+  position: absolute;
+  top: 80px;
+}
+
+.selam {
+   position: absolute;
+   top: 150px;
+}
   </style>
 </head>
 
@@ -96,9 +93,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             echo '</div>';
         }
         ?>
-
     </div>
-
     <?php
     if (isset($_POST['delete'])) {
         if (file_exists($file)) {
@@ -110,5 +105,4 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     </div>
 </div>
 </body>
-
 </html>

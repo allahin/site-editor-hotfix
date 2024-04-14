@@ -110,7 +110,7 @@ echo "Your device: " . $ip;
                 <a href="filemanager"><span>File Manager</span></a>
                 </div>
                 <div class="flex items-center bg-orange-500 rounded overflow-hidden shadow-lg allah">
-                <a href="manager"><img src="" class="w-12 m-4"></a>
+                <a href="manager"><img src="../../assets/img/manager.png" class="w-12 m-4"></a>
                 <a href="manager"><span>Manager</span></a>
                 </div>
             </div>
@@ -119,12 +119,12 @@ echo "Your device: " . $ip;
             <div class="text-2xl font-bold">Databases</div>
             <div class="mt-6 grid grid-cols-2 gap-4">
                 <div class="flex items-center bg-orange-500 rounded overflow-hidden shadow-lg">
-                <a href="mysql.php"><img src="../../assets/img/mysql.jpg" class="w-12 m-4"></a>
-                <a href="mysql.php"><span>MySQL</span></a>
+                <a href="mysql"><img src="../../assets/img/mysql.jpg" class="w-12 m-4"></a>
+                <a href="mysql"><span>MySQL</span></a>
                 </div>
                 <div class="flex items-center bg-orange-500 rounded overflow-hidden shadow-lg">
-                <a href="phpmyadmin.php"><img src="../../assets/img/phpmyadmin.jpg" class="w-12 m-4"></a>
-                <a href="phpmyadmin.php"><span>phpMyAdmin</span></a>
+                <a href="phpmyadmin"><img src="../../assets/img/phpmyadmin.jpg" class="w-12 m-4"></a>
+                <a href="phpmyadmin"><span>phpMyAdmin</span></a>
                 </div>
             </div>
         </div>
@@ -132,12 +132,12 @@ echo "Your device: " . $ip;
             <div class="text-2xl font-bold">Advanced</div>
             <div class="mt-6 grid grid-cols-2 gap-4">
                 <div class="flex items-center bg-orange-500 rounded overflow-hidden shadow-lg">
-                <a href="settings.php"><img src="../../assets/img/settings.jpg" class="w-12 m-4"></a>
-                <a href="settings.php"><span>Settings</span></a>
+                <a href="settings"><img src="../../assets/img/settings.jpg" class="w-12 m-4"></a>
+                <a href="settings"><span>Settings</span></a>
                 </div>
                 <div class="flex items-center bg-orange-500 rounded overflow-hidden shadow-lg">
-                <a href="recommended.php"><img src="../../assets/img/tik.jpg" class="w-12 m-4"></a>
-                <a href="recommended.php"><span>Requirements after setup</span></a>
+                <a href="recommended"><img src="../../assets/img/tik.jpg" class="w-12 m-4"></a>
+                <a href="recommended"><span>Requirements after setup</span></a>
                 </div>
             </div>
         </div>
