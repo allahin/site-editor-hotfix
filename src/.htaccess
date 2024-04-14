@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteRule ^start$ start.php [L]
+RewriteRule ^admin$ ePanel/index.php [L]
+RewriteRule ^panel$ ePanel/panel [L]

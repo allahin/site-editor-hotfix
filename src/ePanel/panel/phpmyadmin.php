@@ -33,8 +33,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="https://i.hizliresim.com/o075n5y.png">
-    <title>Admin panel</title>
+    <link rel="icon" type="image/x-icon" href="<?= file_exists('../../favicon.txt') ? file_get_contents('../../favicon.txt') : "Fatal error, please reinstall." ?>">
+    <title>ePanel | phpMyAdmin</title>
     <style>
     /* Görev çubuğu stilleri */
     #taskbar {
@@ -49,7 +49,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     
     /* Logo stilleri */
     #logo {
-      color: #333;
       font-weight: bold;
       text-decoration: none;
     }
@@ -61,12 +60,36 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
             position: absolute;
             top: 150px;
         }
-        h2 {
-    color: #2B2A4C;
-  }
-  li {
-    color: #B31312; /* Yazı rengi */
-  }
+/* Input Alanı */
+input[type="text"] {
+  width: 200px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+
+/* Placeholder Stili */
+input[type="text"]::placeholder {
+  color: #999; /* isteğe bağlı olarak placeholder rengi */
+}
+
+/* Buton Stili */
+button {
+  padding: 6px 20px;
+  background-color: #007bff; /* buton rengi */
+  color: #fff; /* buton metin rengi */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Butonun Üzerine Gelindiğinde */
+button:hover {
+  background-color: #0056b3; /* butonun hover rengi */
+}
+
   </style>
 </head>
 
@@ -82,26 +105,33 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     </div>
         <div class="container mx-auto p-6">
         <div class="mt-6 selam">
-            <h1 class="font-bold"><a href="../../phpmyadmin">phpMyAdmin</a></h1>
+            <h1 class="font-bold"><a href="../../phpmyadmin">phpMyAdmin</a> page (if have)</h1>
             <script>
-    function aramaYap() {
-        var arananMetin = document.getElementById("arananMetin").value;
-        var sayfaMetni = document.documentElement.innerHTML;
-
-        if (sayfaMetni.indexOf(arananMetin) > -1) {
-            var yeniMetin = sayfaMetni.replace(new RegExp(arananMetin, 'g'), "<span style='background-color: yellow'>" + arananMetin + "</span>");
-            document.documentElement.innerHTML = yeniMetin;
-
-            // Bulunan metnin olduğu kısma kaydırma
-            var hedef = document.querySelector("span[style='background-color: yellow']");
-            hedef.scrollIntoView();
-        } else {
-            alert("Aranan metin bulunamadı.");
-        }
+function aramaYap() {
+    var arananMetin = document.getElementById("arananMetin").value;
+    
+    // Aranan metnin boş olup olmadığını kontrol et
+    if (arananMetin.trim() === "") {
+        alert("Do not enter blank text. Son of a bitch");
+        return; // Boşsa arama yapmayı sonlandır
     }
+
+    var sayfaMetni = document.documentElement.innerHTML;
+
+    if (sayfaMetni.indexOf(arananMetin) > -1) {
+        var yeniMetin = sayfaMetni.replace(new RegExp(arananMetin, 'g'), "<span style='background-color: #88B04B'>" + arananMetin + "</span>");
+        document.documentElement.innerHTML = yeniMetin;
+
+        // Bulunan metnin olduğu kısma kaydırma
+        var hedef = document.querySelector("span[style='background-color: #88B04B']");
+        hedef.scrollIntoView();
+    } else {
+        alert("The searched text was not found.");
+    }
+}
 </script>
 
-        <input type="text" id="arananMetin" placeholder="name">
+        <input type="text" id="arananMetin" placeholder="name" required>
     <button onclick="aramaYap()">Search</button>
             <?php
 $sql = "SHOW DATABASES";
@@ -140,7 +170,7 @@ if ($result->num_rows > 0) {
 // MySQL bağlantısını kapatma
 
 ?>
-
+<br><br>
     </div>
 </div>
 </body>

@@ -33,8 +33,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="https://github.com/favicon.ico">
-    <title>Admin panel</title>
+    <link rel="icon" type="image/x-icon" href="<?= file_exists('../../favicon.txt') ? file_get_contents('../../favicon.txt') : "Fatal error, please reinstall." ?>">
+    <title>ePanel | Recommended</title>
     <style>
     /* Görev çubuğu stilleri */
     #taskbar {

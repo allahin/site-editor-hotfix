@@ -5,13 +5,11 @@ session_start();
 
 $message = '';
 
-// Oturum kontrolü
 if (isset($_SESSION['username'])) {
     header("Location: panel");
     exit();
 }
 
-// Cookie doğrulama
 if (isset($_COOKIE['panel'])) {
     $username = $_COOKIE['panel'];
 
@@ -23,7 +21,6 @@ if (isset($_COOKIE['panel'])) {
     $stmt->close();
 
     if ($count === 1) {
-        // Oturumu başlat
         $_SESSION['username'] = $username;
 
         header("Location: panel");
@@ -45,10 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->fetch();
 
     if (password_verify($password, $hashedPassword)) {
-        // Oturum çerezi (cookie) oluşturma
         setcookie("panel", $username, time() + (7 * 24 * 60 * 60)); // 7 günlük süre
 
-        // Oturumu başlat
         $_SESSION['username'] = $username;
 
         header("Location: ../../epanel/panel");
@@ -58,15 +53,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-  <link rel="icon" type="image/x-icon" href="https://github.com/favicon.ico">
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+  <link rel="icon" type="image/x-icon" href="<?= file_exists('../../favicon.txt') ? file_get_contents('../../favicon.txt') : "Fatal error, please reinstall." ?>">
   <style>
     body {
       background-color: #f8f9fa;
@@ -96,9 +89,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       text-decoration: none;
     }
   </style>
-  <title>Giriş Sayfası</title>
+  <title>ePanel | Login</title>
 </head>
-
 <body>
   <div class="container">
     <div class="row justify-content-center align-items-center min-vh-100">
@@ -122,8 +114,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       </div>
     </div>
   </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

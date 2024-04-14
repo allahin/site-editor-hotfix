@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="icon" type="image/x-icon" href="https://github.com/favicon.ico">
-    <title>Hi</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="icon" href="<?= file_exists('favicon.txt') ? file_get_contents('favicon.txt') : "Fatal error, please reinstall." ?>">
+    <title>Homepage | <?= file_exists('site.txt') ? file_get_contents('site.txt') : "Fatal error, please reinstall." ?></title>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <style>
         .centered-text {
             display: flex;
@@ -26,7 +26,8 @@
 <body>
     <div class="centered-text">
         <p class="bold-text">Welcome!</p>
-        <a class="corner-link" href="start">Are you the founder?</a>
+        <a class="corner-link" href="epanel" style="text-decoration: none;">Are you the founder?</a>
     </div>
+<script src="./assets/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

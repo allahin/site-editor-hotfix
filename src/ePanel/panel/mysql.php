@@ -33,8 +33,8 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="https://github.com/favicon.ico">
-    <title>Admin panel</title>
+    <link rel="icon" type="image/x-icon" href="<?= file_exists('../../favicon.txt') ? file_get_contents('../../favicon.txt') : "Fatal error, please reinstall." ?>">
+    <title>ePanel | MySQL</title>
     <style>
     /* Görev çubuğu stilleri */
     #taskbar {
@@ -130,13 +130,13 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 
   <h2 class="text-lg font-bold mt-4">Database Create</h2>
   <form method="post" class="mb-4">
-    <input type="text" name="db_name" placeholder="Veritabanı adı" required class="px-2 py-1 border rounded">
+    <input type="text" name="db_name" placeholder="Database name" required class="px-2 py-1 border rounded">
     <button type="submit" name="create_db" class="ml-2 px-4 py-2 bg-blue-500 text-white font-semibold rounded">Create</button>
   </form>
 
   <h2 class="text-lg font-bold mt-4">Database Delete</h2>
   <form method="post" class="mb-4">
-    <input type="text" name="db_name" placeholder="Veritabanı adı" required class="px-2 py-1 border rounded">
+    <input type="text" name="db_name" placeholder="Database name" required class="px-2 py-1 border rounded">
     <button type="submit" name="delete_db" class="ml-2 px-4 py-2 bg-red-500 text-white font-semibold rounded">Delete</button>
   </form>
     </div>

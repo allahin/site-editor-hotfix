@@ -1,12 +1,9 @@
-<?php
-$start = microtime(true);?>
-
+<?php $start = microtime(true); ?>
 <?php
 session_start();
 
 require_once '../connect.php';
 
-// Kullanıcı girişi kontrolü
 if (isset($_COOKIE['panel'])) {
     $username = $_COOKIE['panel'];
 
@@ -23,24 +20,20 @@ if (isset($_COOKIE['panel'])) {
     }
 }
 
-// Kullanıcı girişi yapılmamışsa geri yönlendir
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: ../../admin");
     exit;
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="https://github.com/favicon.ico">
-    <title>Admin panel</title>
+    <link href="../../assets/css/tailwind.css" rel="stylesheet">
+    <link rel="icon" href="<?= file_exists('../../favicon.txt') ? file_get_contents('../../favicon.txt') : "Fatal error, please reinstall." ?>">
+    <title>ePanel</title>
     <style>
-    /* Görev çubuğu stilleri */
     #taskbar {
       background-color: #f2f2f2;
       padding: 10px;
@@ -50,8 +43,7 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
       bottom: 0;
       z-index: 9999;
     }
-    
-    /* Logo stilleri */
+
     #logo {
       color: #333;
       font-weight: bold;
@@ -61,17 +53,20 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
       float: right;
       width: 400px;
     }
+
+    .allah {
+      width: 340px;
+    }
   </style>
 </head>
-
 <body class="flex justify-center items-center h-screen">
     <div class="w-3/4">
     <div id="taskbar">
-    <a id="logo" href=""><img src="https://i.hizliresim.com/3fvkof0.png" width="32" height="32" alt=Home title="Home"></a>
+    <a id="logo" href=""><img src="../../assets/img/home.jpg" width="32" height="32" alt=Home title="Home"></a>
   </div>
     <div class="flex items-center px-4 py-2">
         <div class="flex items-center mr-5">
-            <a href=""><img src="https://i.hizliresim.com/5skdb9q.png" alt="logo" width="200" height="50"></a>
+            <a href=""><img src="../../assets/img/epanel.jpg" alt="logo" width="200" height="50"></a>
         </div>
     </div>
     <div class="table-container">
@@ -95,6 +90,13 @@ $ip = gethostbyname($_SERVER['SERVER_NAME']);
 echo "Sites IP: " . $ip;
 ?>
 </td>
+</tr>
+<tr>
+<td class="py-2 px-4 border-b"><?php
+$ip = php_uname();
+echo "Your device: " . $ip;
+?>
+</td>
         </tr>
       </tbody>
     </table>
@@ -104,8 +106,12 @@ echo "Sites IP: " . $ip;
             <div class="text-2xl font-bold">Files</div>
             <div class="mt-6 grid grid-cols-2 gap-4">
                 <div class="flex items-center bg-orange-500 rounded overflow-hidden shadow-lg">
-                <a href="filemanager"><img src="https://i.hizliresim.com/iaex8ac.png" class="w-12 m-4"></a>
+                <a href="filemanager"><img src="../../assets/img/file.jpg" class="w-12 m-4"></a>
                 <a href="filemanager"><span>File Manager</span></a>
+                </div>
+                <div class="flex items-center bg-orange-500 rounded overflow-hidden shadow-lg allah">
+                <a href="manager"><img src="" class="w-12 m-4"></a>
+                <a href="manager"><span>Manager</span></a>
                 </div>
             </div>
         </div>
@@ -113,7 +119,7 @@ echo "Sites IP: " . $ip;
             <div class="text-2xl font-bold">Databases</div>
             <div class="mt-6 grid grid-cols-2 gap-4">
                 <div class="flex items-center bg-orange-500 rounded overflow-hidden shadow-lg">
-                <a href="mysql.php"><img src="https://i.hizliresim.com/aysmfvd.png" class="w-12 m-4"></a>
+                <a href="mysql.php"><img src="../../asssets/img/mysql.jpg" class="w-12 m-4"></a>
                 <a href="mysql.php"><span>MySQL</span></a>
                 </div>
                 <div class="flex items-center bg-orange-500 rounded overflow-hidden shadow-lg">
@@ -126,8 +132,8 @@ echo "Sites IP: " . $ip;
             <div class="text-2xl font-bold">Advanced</div>
             <div class="mt-6 grid grid-cols-2 gap-4">
                 <div class="flex items-center bg-orange-500 rounded overflow-hidden shadow-lg">
-                <a href="settings"><img src="https://i.hizliresim.com/684tj2w.png" class="w-12 m-4"></a>
-                <a href="settings"><span>Settings</span></a>
+                <a href="settings.php"><img src="https://i.hizliresim.com/684tj2w.png" class="w-12 m-4"></a>
+                <a href="settings.php"><span>Settings</span></a>
                 </div>
                 <div class="flex items-center bg-orange-500 rounded overflow-hidden shadow-lg">
                 <a href="recommended.php"><img src="https://i.hizliresim.com/f4hlqjw.jpg" class="w-12 m-4"></a>
