@@ -3,7 +3,6 @@ session_start();
 
 require_once '../connect.php';
 
-// Kullanıcı girişi kontrolü
 if (isset($_COOKIE['panel'])) {
     $username = $_COOKIE['panel'];
 
@@ -20,7 +19,6 @@ if (isset($_COOKIE['panel'])) {
     }
 }
 
-// Kullanıcı girişi yapılmamışsa geri yönlendir
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: ../../admin");
     exit;
@@ -28,7 +26,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,7 +33,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <link rel="icon" type="image/x-icon" href="<?= file_exists('../../favicon.txt') ? file_get_contents('../../favicon.txt') : "Fatal error, please reinstall." ?>">
     <title>ePanel | MySQL</title>
     <style>
-    /* Görev çubuğu stilleri */
     #taskbar {
       background-color: #f2f2f2;
       padding: 10px;
@@ -47,7 +43,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
       z-index: 9999;
     }
     
-    /* Logo stilleri */
     #logo {
       color: #333;
       font-weight: bold;
@@ -63,21 +58,19 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
         }
   </style>
 </head>
-
 <body class="flex justify-center items-center h-screen">
 <div class="w-3/4">
     <div id="taskbar">
-    <a id="logo" href="index.php"><img src="https://i.hizliresim.com/3fvkof0.png" width="32" height="32" alt=Home title="Home"></a>
+    <a id="logo" href="index.php"><img src="../../assets/img/home.jpg" width="32" height="32" alt=Home title="Home"></a>
   </div>
     <div class="flex items-center px-4 py-2">
         <div class="flex items-center mr-5 logo-container">
-            <a href="index.php"><img src="https://i.hizliresim.com/5skdb9q.png" alt="logo" width="200" height="50"></a>
+            <a href="index.php"><img src="../../assets/img/epanel.jpg" alt="logo" width="200" height="50"></a>
         </div>
     </div>
         <div class="container mx-auto p-6">
         <div class="mt-6 selam">
   <?php
-  // Veritabanı oluşturma işlemi
   if (isset($_POST['create_db'])) {
     $db_name = $_POST['db_name'];
 
@@ -93,7 +86,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     }
   }
 
-  // Veritabanı silme işlemi
   if (isset($_POST['delete_db'])) {
     $db_name = $_POST['db_name'];
 
@@ -116,7 +108,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     }
   }
 
-  // Veritabanlarını listeleme işlemi
   $show_databases_query = "SHOW DATABASES";
   $databases = $conn->query($show_databases_query);
   ?>
@@ -142,5 +133,4 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     </div>
 </div>
 </body>
-
 </html>

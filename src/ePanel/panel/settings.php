@@ -129,11 +129,11 @@ button:hover {
 <body class="flex justify-center items-center h-screen">
 <div class="w-3/4">
     <div id="taskbar">
-    <a id="logo" href="index.php"><img src="https://i.hizliresim.com/3fvkof0.png" width="32" height="32" alt=Home title="Home"></a>
+    <a id="logo" href="index.php"><img src="../../assets/img/home.jpg" width="32" height="32" alt=Home title="Home"></a>
   </div>
     <div class="flex items-center px-4 py-2">
         <div class="flex items-center mr-5 logo-container">
-            <a href="index.php"><img src="https://i.hizliresim.com/5skdb9q.png" alt="logo" width="200" height="50"></a>
+            <a href="index.php"><img src="../../assets/img/epanel.jpg" alt="logo" width="200" height="50"></a>
         </div>
     </div>
         <div class="container mx-auto p-6">

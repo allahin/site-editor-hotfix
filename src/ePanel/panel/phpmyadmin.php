@@ -3,7 +3,6 @@ session_start();
 
 require_once '../connect.php';
 
-// Kullanıcı girişi kontrolü
 if (isset($_COOKIE['panel'])) {
     $username = $_COOKIE['panel'];
 
@@ -20,7 +19,6 @@ if (isset($_COOKIE['panel'])) {
     }
 }
 
-// Kullanıcı girişi yapılmamışsa geri yönlendir
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     header("Location: ../../admin");
     exit;
@@ -28,7 +26,6 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -36,31 +33,31 @@ if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
     <link rel="icon" type="image/x-icon" href="<?= file_exists('../../favicon.txt') ? file_get_contents('../../favicon.txt') : "Fatal error, please reinstall." ?>">
     <title>ePanel | phpMyAdmin</title>
     <style>
-    /* Görev çubuğu stilleri */
-    #taskbar {
-      background-color: #f2f2f2;
-      padding: 10px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      z-index: 9999;
-    }
-    
-    /* Logo stilleri */
-    #logo {
-      font-weight: bold;
-      text-decoration: none;
-    }
-    .logo-container {
-            position: absolute;
-            top: 80px;
-        }
-        .selam {
-            position: absolute;
-            top: 150px;
-        }
-/* Input Alanı */
+#taskbar {
+    background-color: #f2f2f2;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 9999;
+}
+
+#logo {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.logo-container {
+    position: absolute;
+     top: 80px;
+}
+
+.selam {
+     position: absolute;
+    top: 150px;
+}
+
 input[type="text"] {
   width: 200px;
   padding: 5px;
@@ -69,38 +66,34 @@ input[type="text"] {
   outline: none;
 }
 
-/* Placeholder Stili */
+
 input[type="text"]::placeholder {
-  color: #999; /* isteğe bağlı olarak placeholder rengi */
+  color: #999;
 }
 
-/* Buton Stili */
 button {
   padding: 6px 20px;
-  background-color: #007bff; /* buton rengi */
-  color: #fff; /* buton metin rengi */
+  background-color: #007bff;
+  color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   outline: none;
 }
 
-/* Butonun Üzerine Gelindiğinde */
 button:hover {
-  background-color: #0056b3; /* butonun hover rengi */
+  background-color: #0056b3;
 }
-
   </style>
 </head>
-
 <body class="flex justify-center items-center h-screen">
 <div class="w-3/4">
     <div id="taskbar">
-    <a id="logo" href="index.php"><img src="https://i.hizliresim.com/3fvkof0.png" width="32" height="32" alt=Home title="Home"></a>
+    <a id="logo" href="index.php"><img src="../../assets/img/home.jpg" width="32" height="32" alt=Home title="Home"></a>
   </div>
     <div class="flex items-center px-4 py-2">
         <div class="flex items-center mr-5 logo-container">
-            <a href="index.php"><img src="https://i.hizliresim.com/5skdb9q.png" alt="logo" width="200" height="50"></a>
+            <a href="index.php"><img src="../../assets/img/epanel.jpg" alt="logo" width="200" height="50"></a>
         </div>
     </div>
         <div class="container mx-auto p-6">
@@ -110,10 +103,9 @@ button:hover {
 function aramaYap() {
     var arananMetin = document.getElementById("arananMetin").value;
     
-    // Aranan metnin boş olup olmadığını kontrol et
     if (arananMetin.trim() === "") {
         alert("Do not enter blank text. Son of a bitch");
-        return; // Boşsa arama yapmayı sonlandır
+        return;
     }
 
     var sayfaMetni = document.documentElement.innerHTML;
@@ -122,7 +114,6 @@ function aramaYap() {
         var yeniMetin = sayfaMetni.replace(new RegExp(arananMetin, 'g'), "<span style='background-color: #88B04B'>" + arananMetin + "</span>");
         document.documentElement.innerHTML = yeniMetin;
 
-        // Bulunan metnin olduğu kısma kaydırma
         var hedef = document.querySelector("span[style='background-color: #88B04B']");
         hedef.scrollIntoView();
     } else {
@@ -130,32 +121,26 @@ function aramaYap() {
     }
 }
 </script>
-
-        <input type="text" id="arananMetin" placeholder="name" required>
+    <input type="text" id="arananMetin" placeholder="name" required>
     <button onclick="aramaYap()">Search</button>
             <?php
 $sql = "SHOW DATABASES";
 $result = $conn->query($sql);
 
-// Veritabanlarını listeleyen döngü
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
         $databaseName = $row["Database"];
 
-        // Veritabanı adını ekrana yazdırma ve bağlantı oluşturma
         echo '<h2 class="text-xl mt-6"><a href="../../phpmyadmin/index.php?route=/database/structure&db=' . $databaseName . '">' . $databaseName . '</a></h2>';
 
-        // Veritabanı tablolarını listeleme SQL sorgusu
         $tableSql = "SHOW TABLES FROM $databaseName";
         $tableResult = $conn->query($tableSql);
 
-        // Tabloları listeleyen döngü
         if ($tableResult->num_rows > 0) {
             echo '<ul class="list-disc list-inside ml-4">';
             while ($tableRow = $tableResult->fetch_assoc()) {
                 $tableName = $tableRow["Tables_in_$databaseName"];
 
-                // Tablo adını ekrana yazdırma ve bağlantı oluşturma
                 echo '<li><a href="../../phpmyadmin/index.php?route=/sql&pos=0&db=' . $databaseName . '&table=' . $tableName . '">' . $tableName . '</a></li>';
             }
             echo '</ul>';
@@ -166,13 +151,9 @@ if ($result->num_rows > 0) {
 } else {
     echo '<p class="text-gray-600">No database was found.</p>';
 }
-
-// MySQL bağlantısını kapatma
-
 ?>
 <br><br>
-    </div>
+</div>
 </div>
 </body>
-
 </html>
