@@ -1,4 +1,10 @@
 <?php
+if (filesize('ePanel/connect.php') > 0) {
+    header('Location: admin');
+    exit;
+}
+?>
+<?php
 $host = "";
 $username = "";
 $password = "";

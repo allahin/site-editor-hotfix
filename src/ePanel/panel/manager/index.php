@@ -2,7 +2,7 @@
 <?php
 session_start();
 
-require_once '../connect.php';
+require_once '../../connect.php';
 
 if (isset($_COOKIE['panel'])) {
     $username = $_COOKIE['panel'];
@@ -21,7 +21,7 @@ if (isset($_COOKIE['panel'])) {
 }
 
 if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
-    header("Location: ../../admin");
+    header("Location: ../../../admin");
     exit;
 }
 ?>

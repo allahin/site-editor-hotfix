@@ -26,7 +26,7 @@
 <body>
     <div class="centered-text">
         <p class="bold-text">Welcome!</p>
-        <a class="corner-link" href="epanel" style="text-decoration: none;">Are you the founder?</a>
+        <a class="corner-link" href="start" style="text-decoration: none;">Are you the founder?</a>
     </div>
 <script src="./assets/js/bootstrap.bundle.min.js"></script>
 </body>
