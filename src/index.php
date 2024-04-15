@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="<?= file_exists('favicon.txt') ? file_get_contents('favicon.txt') : "Fatal error, please reinstall." ?>">
     <title>Homepage | <?= file_exists('site.txt') ? file_get_contents('site.txt') : "Fatal error, please reinstall." ?></title>
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
