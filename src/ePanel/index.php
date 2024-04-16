@@ -1,4 +1,10 @@
 <?php
+if (filesize('connect.php') < 1) {
+    header('Location: ../start');
+    exit;
+}
+?>
+<?php
 require_once 'connect.php';
 
 session_start();
