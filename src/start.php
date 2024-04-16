@@ -133,7 +133,7 @@ if (isset($_COOKIE[$cookieName])) {
                     <br>
                     <div class="form-group">
                         <label for="password">Database Password:</label>
-                        <input type="password" class="form-control" id="password" name="password" autocomplete="off" required>
+                        <input type="password" class="form-control" id="password" name="password" autocomplete="off">
                     </div>
                     <br>
                     <div class="form-group">
